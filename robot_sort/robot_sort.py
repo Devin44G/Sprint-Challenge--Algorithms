@@ -111,13 +111,9 @@ class SortingRobot:
                 if self.compare_item() == 1:  # <-- If my item is greater
                     self.set_light_on()
                     self.swap_item()
-                    self.move_left()
-                    self.swap_item()
-                    self.move_right()
-                elif self.compare_item() == -1:  # <-- If my item is less
-                    self.move_left()
-                    self.swap_item()
-                    self.move_right()
+                self.move_left()
+                self.swap_item()
+                self.move_right()
 
             while self.can_move_left():  # <-- Resetting robot to beginning of list after every completed run through
                 self.move_left()
