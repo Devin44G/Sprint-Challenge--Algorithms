@@ -96,8 +96,27 @@ class SortingRobot:
         """
         Sort the robot's list.
         """
-        # Fill this out
-        pass
+        # self.swap_item()  <-- JUST FINDING OUT HOW TO PICK UP ITEMS
+        # print(self._item)
+        while self.can_move_right():
+            # FOR EVERY INCREMENTATION OF POSITION, I WANT TO PICK UP
+            # AND COMPARE MY HELD ITEM WITH THE ITEM AT MY POSITION
+            self.swap_item()     # <-- Initial swap to pick up first item in list (Basically swapping first value with None)
+            self.move_right()
+
+            if self.compare_item() == 1:  # <-- If my item is greater
+                self.swap_item()
+                self.move_left()
+                self.swap_item()
+                self.move_right()
+            elif self.compare_item() == -1:  # <-- If my item is less
+                self.move_left()
+                self.swap_item()
+                self.move_right()
+
+        while self.can_move_left():  # <-- Resetting robot to beginning of list after every completed run through
+            self.move_left()
+
 
 
 if __name__ == "__main__":
